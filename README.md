@@ -1,9 +1,9 @@
 # Tsvariani-Metasearch-Engine
-The Tsvariani Metasearch Engine is an open-source search engine that prioritizes user privacy and security. It aggregates search results from various search engines, ensuring diversity and comprehensiveness of data. The engine is maintained by Givikuna and is completely secure, with an option to track user data only if the user chooses to enable it.
+The Tsvariani Metasearch Engine is an open-source search engine that prioritizes user privacy and security. It aggregates search results from various search engines, ensuring diversity and comprehensiveness of data. The engine is currently being worked on and maintained by [givikuna](https://github.com/givikuna) and is completely secure, with an option to track user data only if the user chooses to enable it.
 
-The graphical user interface (GUI) is available in four different languages: English, Georgian, Russian, Spanish.
+The graphical user interface (GUI) will be available in four different languages: English, Georgian, Russian, Spanish.
 
-# Why use it?
+# Why use it? (Here are some things that the engine will be able to provide for it's users):
 
 1. **Privacy Focus**: The engine prioritizes user privacy by not tracking user data by default, unless the user explicitly enables the tracking setting.
 
