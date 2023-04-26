@@ -45,7 +45,7 @@ PandaCrawler is an open-source, privacy-oriented metasearch engine that prioriti
 
 19. **No Filter Bubble**: The engine does not collect any information on you, hence it does not filter search results based on political or ideological biases, ensuring that users have access to diverse and unbiased information.
 
-20. **Zero-Logs Policy&&: The engine follows a strict zero-logs policy, meaning that no user data or search history is stored on the engine's servers (but rather locally on the person's computer), providing an additional layer of privacy and security.
+20. **Zero-Logs Policy**: The engine follows a strict zero-logs policy, meaning that no user data or search history is stored on the engine's servers (but rather locally on the person's computer), providing an additional layer of privacy and security.
 
 21. **Extension Support**: The engine allows users to install privacy-focused browser extensions that further enhance their online privacy and security, many of which are created and maintained by the PandaCrawler team.
 
