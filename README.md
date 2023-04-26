@@ -31,7 +31,7 @@ PandaCrawler is an open-source, privacy-oriented metasearch engine that prioriti
 
 12. **Bookmarking**: The engine allows users to bookmark websites for quick and easy access to their favorite search results.
 
-13. **User Customization**: The engine allows users to customize their search preferences, such as search language, search region, and search result display settings.
+13. **User Customization**: The engine allows users to customize the appearance of the search engine, including options for changing the color scheme, font size, background image, and other visual elements.
 
 14. **Search History**: The engine keeps a local search history for users to easily access their past search queries and results (this can be disabled).
 
