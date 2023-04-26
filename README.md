@@ -1,5 +1,5 @@
-# Tsvariani-Metasearch-Engine
-The Tsvariani Metasearch Engine is an open-source search engine that prioritizes user privacy and security. It aggregates search results from various search engines, ensuring diversity and comprehensiveness of data. The engine is currently being worked on and maintained by [givikuna](https://github.com/givikuna) and is completely secure, with an option to track user data only if the user chooses to enable it.
+# PandaCrawler
+PandaCrawler is an open-source metasearch engine that prioritizes user privacy and security. It aggregates search results from various search engines, ensuring diversity and comprehensiveness of data. The engine is currently being worked on and maintained by [givikuna](https://github.com/givikuna) and is completely secure, with an option to track user data only if the user chooses to enable it.
 
 The graphical user interface (GUI) will be available in four different languages: English, Georgian, Russian, Spanish.
 
@@ -32,6 +32,10 @@ The graphical user interface (GUI) will be available in four different languages
 13. **Search History**: The engine keeps a local search history for users to easily access their past search queries and results.
 
 14. **User Feedback**: The engine encourages user feedback to continuously improve the search experience and address any issues or concerns.
+
+15. **Privacy-Focused Service Directory**: The engine includes a curated directory of open-source and privacy-oriented websites and services, making it easy for users to discover and access privacy-conscious alternatives. This directory contains a wide range of services, including email providers, messaging apps, cloud storage, VPNs, browsers, extensions and more, all focused on prioritizing user privacy and data security.
+
+16. **Integration with Privacy-Oriented Projects**: The engine enables seamless integration with other privacy-oriented, open-source projects for enhanced capabilities and access to privacy-enhancing tools and services.
 
 # Installation:
 
