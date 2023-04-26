@@ -1,5 +1,5 @@
 # PandaCrawler
-PandaCrawler is an open-source metasearch engine that prioritizes user privacy and security. It aggregates search results from various search engines, ensuring diversity and comprehensiveness of data. The engine is currently being worked on and maintained by [givikuna](https://github.com/givikuna) and is completely secure, with an option to track user data only if the user chooses to enable it.
+PandaCrawler is an open-source, privacy-oriented metasearch engine that prioritizes user privacy and security. It aggregates search results from various search engines, ensuring diversity and comprehensiveness of data. The engine is currently being worked on and maintained by [givikuna](https://github.com/givikuna).
 
 <p align="center">
   <a href="https://github.com/givikuna/PandaCrawler/"><img src="https://github.com/givikuna/PandaCrawler/blob/main/pandas/panda26.png" title="PandaCrawler" alt="PandaCrawler" width="500" height="700"/></a>
