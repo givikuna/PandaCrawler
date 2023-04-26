@@ -47,7 +47,7 @@ PandaCrawler is an open-source, privacy-oriented metasearch engine that prioriti
 
 20. **Zero-Logs Policy**: The engine follows a strict zero-logs policy, meaning that no user data or search history is stored on the engine's servers (but rather locally on the person's computer), providing an additional layer of privacy and security.
 
-21. **Extension Support**: The engine allows users to install privacy-focused search engine extensions that further enhance their online privacy and security, many of which are created and maintained by the PandaCrawler team.
+21. **Extension Support**: The engine allows users to install search engine extensions that further enhance their online privacy and security, while making the search engine easier and more convenient to use, many of which are created and maintained by the PandaCrawler team.
 
 22. **Offline Access**: The engine provides offline access to previously accessed search results, allowing users to access their search history and bookmarks even when they are offline, ensuring continuity in their browsing experience (all the data is stored locally, and can be cleared).
 
