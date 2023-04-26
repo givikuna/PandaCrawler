@@ -9,7 +9,7 @@ PandaCrawler is an open-source, privacy-oriented metasearch engine that prioriti
 
 1. **Privacy Focus**: The engine prioritizes user privacy by not tracking user data by default.
 
-2. **No Ads**: PandaCrawler is meant to be free and easy to use for all, and has no annoying ads, making it's using much more comfortable.
+2. **No Ads**: PandaCrawler is meant to be free and easy to use for all, and has no annoying ads, making it much more comfortable to use.
 
 3. **Security**: The engine is designed with robust security measures to prevent hacking and ensure the safety of user data.
 
