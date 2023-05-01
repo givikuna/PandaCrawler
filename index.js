@@ -76,6 +76,23 @@ function getPage(infoFromURL) {
     }
 }
 
+function getExtension(TYPE) {
+    currentFunc = "getExtension";
+    try {
+        if (TYPE == "script" || TYPE == "component_script") {
+            return ".js";
+        }
+        return ".css";
+    } catch (e) {
+        console.log(fileName + " " + currentFunc + " ERROR: " + e);
+        return ".js";
+    }
+}
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 28) + 1;
+  }
+
 //
 
 /* /// */
@@ -85,21 +102,63 @@ function getPage(infoFromURL) {
 app.get('/', function (req, res) {
     try {
         var infoFromURL = url.parse(req.url, true).query;
-        const PAGE = getPage(infoFromURL);
-        const FILEPATH = path.join("./", "index.html");
-        fs.readFile(FILEPATH, 'utf-8', function (err, data) {
-            if (err) {
-                console.log("index.js ERROR: " + err);
+        if ("type" in infoFromURL && infoFromURL.type == "data" && "dataType" in infoFromURL) {
+            const TYPE = infoFromURL.dataType;
+            if (TYPE == "json") {
+                res.write("[]");
+                return res.end(); // temp
+            } else if (TYPE == "script" || TYPE == "style") {
+                fs.readFile(globalPathFinder(["src", TYPE], TYPE + getExtension(TYPE)), 'utf-8', function (err, data) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    res.write(data.toString());
+                    return res.end();
+                });
+            } else if (TYPE == "component" && "componentID" in infoFromURL) {
+                fs.readFile(globalPathFinder(["src", TYPE + "s", infoFromURL.componentID], "c.html"), 'utf-8', function (err, data) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    var dataString = data.toString();
+                    if (dataString.includes("@RANDOMPANDA")) {
+                        dataString.replace(/@RANDOMPANDA/g, getRandomNumber());
+                    }
+                    res.write(dataString);
+                    return res.end();
+                });
+            } else if ((TYPE == "component_style" || TYPE == "component_script") && "componentID" in infoFromURL) {
+                fs.readFile(globalPathFinder(["src", "components", infoFromURL.componentID], "src" + getExtension(TYPE)), 'utf-8', function(err, data) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    res.write(data.toString());
+                    return res.end();
+                });
+            } else if (TYPE == "img" && "image" in infoFromURL && "image_type" in infoFromURL) {
+                res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
+                fs.readFile(globalPathFinder(["src", "img", infoFromURL.image_type], infoFromURL.image), function(err, data) {
+                    res.write(data);
+                    return res.end();
+                });
             }
-            var dataString = data.toString();
-            if (typeof dataString == 'string' && dataString !== "") {
-                if (dataString.includes("@GIVENPAGE")) {
-                    dataString = dataString.replace(/@GIVENPAGE/g, PAGE);
+        } else {
+            const PAGE = getPage(infoFromURL);
+            const FILEPATH = path.join("./", "index.html");
+            fs.readFile(FILEPATH, 'utf-8', function (err, data) {
+                if (err) {
+                    console.log(err);
                 }
-            }
-            res.write(dataString);
-            return res.end();
-        });
+                var dataString = data.toString();
+                if (typeof dataString == 'string' && dataString !== "") {
+                    if (dataString.includes("@GIVENPAGE") == true) {
+                        dataString = dataString.replace(/@GIVENPAGE/g, PAGE);
+                    }
+                }
+                res.write(dataString);
+                return res.end();
+            });
+        }
     } catch (error) {
         console.log("index.js ERROR: " + error);
     }

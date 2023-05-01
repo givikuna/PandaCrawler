@@ -3,24 +3,18 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="style/style.css">
-    <script type="text/javascript" src="script/script.js"> </script>
+    <link rel="stylesheet" href="http://localhost:8091/?type=data&dataType=style">
+    <script type="text/javascript" src="http://localhost:8091/?type=data&dataType=script"> </script>
 </head>
 
-<body onload="load('@GIVENPAGE')">
-    <nav>
-        <div class="navbar-container">
-            <a class="logo" href="#">  </a>
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Search...">
-                <button type="submit" class="search-button">Search</button>
-            </form>
-        </div>
+<body onload="loader('@GIVENPAGE')">
+    <nav id="navbar">
+        <!-- // / // -->
     </nav>
-    <main>
+    <main id="main">
         <!-- // / // -->
     </main>
-    <footer>
+    <footer id="footer">
         <!-- // / // -->
     </footer>
 </body>
