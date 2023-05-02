@@ -1,15 +1,13 @@
 #homePageSettingsIconImage {
-    height: 2%;
-    width: 2%;
-    padding-right: 10%;
+    padding-right: 0.5%;
 }
 
-#pandaIconImage {
-    height: 2%;
-    width: 2%;
-    padding-right: 9%;
+.homePageIconsIMGClass {
+    height: 2.5%;
+    width: 2.5%;
 }
 
 #iconsNavbarThing {
     text-align: right;
+    padding-right: 10%;
 }

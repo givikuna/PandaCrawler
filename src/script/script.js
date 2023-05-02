@@ -8,11 +8,7 @@ function loader(page) {
 			if (this.status == 200) {
 				const userInfo = JSON.parse(this.responseText);
 				// make this into a switch later
-				if (page == "settings_general") {
-					//
-				} else if (page == "settings_appearance") {
-					//
-				} else if (page == "settings_privacy") {
+				if (page == "settings") {
 					//
 				} else if (page == "search") {
 					//
@@ -45,11 +41,10 @@ function loader(page) {
 }
 
 function buildHomePage(page) {
-	buildHomePage_add_homePageTopIcons(page);
-	buildHomePage_add_homePageSearchBar(page);
+	buildHomePage_add_homePageTopIcons(page, buildHomePage_add_homePageSearchBar);
 }
 
-function buildHomePage_add_homePageTopIcons(page) {
+function buildHomePage_add_homePageTopIcons(page, nextFunction) {
 	var xhttp = new XMLHttpRequest();
 	var url = "http://localhost:8091/?page=" + page + "&type=data&dataType=component&componentID=homePageTopIcons";
 	xhttp.open("GET", url, true);
@@ -64,6 +59,8 @@ function buildHomePage_add_homePageTopIcons(page) {
 				link.rel = 'stylesheet';
 				link.href = 'http://localhost:8091/?page=undefined&type=data&dataType=component_style&componentID=homePageTopIcons';
 				document.head.appendChild(link);
+
+				nextFunction(page);
 			}
 		}
 	};

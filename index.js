@@ -91,7 +91,11 @@ function getExtension(TYPE) {
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 28) + 1;
-  }
+}
+
+function getChosenSearchEngine() {
+    return fs.readFileSync(globalPathFinder(["src", "data"], "currentlyChosenSearchEngine.txt"));
+}
 
 //
 
@@ -102,6 +106,21 @@ function getRandomNumber() {
 app.get('/', function (req, res) {
     try {
         var infoFromURL = url.parse(req.url, true).query;
+        function returnEmpty(err) {
+            console.log(err);
+            res.write("");
+            return res.end();
+        }
+
+        function repeat(err, data) {
+            if (err) {
+                return returnEmpty(err);
+            } else {
+                res.write(data.toString());
+                return res.end();
+            }
+        }
+
         if ("type" in infoFromURL && infoFromURL.type == "data" && "dataType" in infoFromURL) {
             const TYPE = infoFromURL.dataType;
             if (TYPE == "json") {
@@ -109,37 +128,37 @@ app.get('/', function (req, res) {
                 return res.end(); // temp
             } else if (TYPE == "script" || TYPE == "style") {
                 fs.readFile(globalPathFinder(["src", TYPE], TYPE + getExtension(TYPE)), 'utf-8', function (err, data) {
-                    if (err) {
-                        console.log(err);
-                    }
-                    res.write(data.toString());
-                    return res.end();
+                    return repeat(err, data);
                 });
             } else if (TYPE == "component" && "componentID" in infoFromURL) {
                 fs.readFile(globalPathFinder(["src", TYPE + "s", infoFromURL.componentID], "c.html"), 'utf-8', function (err, data) {
                     if (err) {
-                        console.log(err);
+                        return returnEmpty(err);
+                    } else {
+                        let dataString = data.toString();
+                        if (dataString.includes("@RANDOMPANDA")) {
+                            dataString = dataString.replace(/@RANDOMPANDA/g, getRandomNumber());
+                        } else if (dataString.includes("@SEARCHENGINE")) {
+                            let theChosenSearchEngine = getChosenSearchEngine();
+                            dataString = dataString.replace(/@SEARCHENGINE/g, theChosenSearchEngine);
+                        }
+                        res.write(dataString);
+                        return res.end();
                     }
-                    var dataString = data.toString();
-                    if (dataString.includes("@RANDOMPANDA")) {
-                        dataString.replace(/@RANDOMPANDA/g, getRandomNumber());
-                    }
-                    res.write(dataString);
-                    return res.end();
                 });
             } else if ((TYPE == "component_style" || TYPE == "component_script") && "componentID" in infoFromURL) {
-                fs.readFile(globalPathFinder(["src", "components", infoFromURL.componentID], "src" + getExtension(TYPE)), 'utf-8', function(err, data) {
-                    if (err) {
-                        console.log(err);
-                    }
-                    res.write(data.toString());
-                    return res.end();
+                fs.readFile(globalPathFinder(["src", "components", infoFromURL.componentID], "src" + getExtension(TYPE)), 'utf-8', function (err, data) {
+                    return repeat(err, data);
                 });
             } else if (TYPE == "img" && "image" in infoFromURL && "image_type" in infoFromURL) {
                 res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
-                fs.readFile(globalPathFinder(["src", "img", infoFromURL.image_type], infoFromURL.image), function(err, data) {
-                    res.write(data);
-                    return res.end();
+                fs.readFile(globalPathFinder(["src", "img", infoFromURL.image_type], infoFromURL.image), function (err, data) {
+                    if (err) {
+                        return returnEmpty(err);
+                    } else {
+                        res.write(data);
+                        return res.end();
+                    }
                 });
             }
         } else {
