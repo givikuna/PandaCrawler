@@ -1,6 +1,6 @@
 function loader(page) {
 	var xhttp = new XMLHttpRequest();
-	var url = "http://localhost:8091/?page=" + page + "&type=data&dataType=json";
+	var url = "http://localhost:8095/?page=" + page + "&type=data&dataType=json";
 	xhttp.open("GET", url, true);
 
 	xhttp.onreadystatechange = function () {
@@ -46,7 +46,7 @@ function buildHomePage(page) {
 
 function buildHomePage_add_homePageTopIcons(page, nextFunction) {
 	var xhttp = new XMLHttpRequest();
-	var url = "http://localhost:8091/?page=" + page + "&type=data&dataType=component&componentID=homePageTopIcons";
+	var url = "http://localhost:8093/?page=" + page + "&type=data&dataType=component&componentID=homePageTopIcons";
 	xhttp.open("GET", url, true);
 
 	xhttp.onreadystatechange = function () {
@@ -57,7 +57,7 @@ function buildHomePage_add_homePageTopIcons(page, nextFunction) {
 
 				var link = document.createElement('link');
 				link.rel = 'stylesheet';
-				link.href = 'http://localhost:8091/?page=undefined&type=data&dataType=component_style&componentID=homePageTopIcons';
+				link.href = 'http://localhost:8093/?page=undefined&type=data&dataType=component_style&componentID=homePageTopIcons';
 				document.head.appendChild(link);
 
 				nextFunction(page);
@@ -79,7 +79,7 @@ function buildHomePage_add_homePageSearchBar(page) {
 		</div>
 	*/
 	var xhttp = new XMLHttpRequest();
-	var url = "http://localhost:8091/?page=" + page + "&type=data&dataType=component&componentID=homePageSearchBar";
+	var url = "http://localhost:8093/?page=" + page + "&type=data&dataType=component&componentID=homePageSearchBar";
 	xhttp.open("GET", url, true);
 
 	xhttp.onreadystatechange = function () {
@@ -90,7 +90,7 @@ function buildHomePage_add_homePageSearchBar(page) {
 
 				var link = document.createElement('link');
 				link.rel = 'stylesheet';
-				link.href = 'http://localhost:8091/?page=undefined&type=data&dataType=component_style&componentID=homePageSearchBar';
+				link.href = 'http://localhost:8093/?page=undefined&type=data&dataType=component_style&componentID=homePageSearchBar';
 				document.head.appendChild(link);
 			}
 		}
