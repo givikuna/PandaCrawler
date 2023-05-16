@@ -56,6 +56,7 @@ function getExtension(TYPE) {
 }
 
 app.get('/', function (req, res) {
+    res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
     try {
         var infoFromURL = url.parse(req.url, true).query;
         res.write("[]");

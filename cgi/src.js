@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
+const http = require('http');
 
 const fileName = "index.js";
 let currentFunc = "";
@@ -57,16 +58,18 @@ function getExtension(TYPE) {
 
 app.get('/', function (req, res) {
     try {
+        res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
+
+        let wrote = false;
+
         var infoFromURL = url.parse(req.url, true).query;
+
         if ("dataType" in infoFromURL && (infoFromURL.dataType == "script" || infoFromURL.dataType == "style")) {
-            if (fs.existsSync(globalPathFinder(["src", infoFromURL.dataType], infoFromURL.dataType + getExtension(infoFromURL.dataType)))) {
-                fs.readFile(globalPathFinder(["src", infoFromURL.dataType], infoFromURL.dataType + getExtension(infoFromURL.dataType)), 'utf-8', function (err, data) {
-                    if (err) {
-                        throw err;
-                    }
-                    res.write(data.toString());
-                    return res.end();
-                });
+            let pth = globalPathFinder(["src", infoFromURL.dataType], infoFromURL.dataType + getExtension(infoFromURL.dataType));
+            if (fs.existsSync(pth)) {
+                let data = fs.readFileSync(pth, 'utf-8');
+                res.write(data);
+                return res.end();
             }
         }
         res.write("");
@@ -80,5 +83,5 @@ app.get('/', function (req, res) {
 
 if (!module.parent) {
     app.listen(8095);
-    console.log('Server running at http://127.0.0.1:8095/');
+    console.log('Server running at http://127.0.0.1:8092/');
 }

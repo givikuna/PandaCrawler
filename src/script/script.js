@@ -1,96 +1,57 @@
+const pages = ['settings', 'search', 'documentation', 'about', 'extensions', 'home', 'password_manager', 'search_history', 'feedback_page', 'contact', 'services'];
+
 function loader(page) {
 	var xhttp = new XMLHttpRequest();
-	var url = "http://localhost:8095/?page=" + page + "&type=data&dataType=json";
+	var url = "http://localhost:8094/?page=" + page + "&type=data&dataType=json";
 	xhttp.open("GET", url, true);
 
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4) {
 			if (this.status == 200) {
 				const userInfo = JSON.parse(this.responseText);
-				// make this into a switch later
-				if (page == "settings") {
-					//
-				} else if (page == "search") {
-					//
-				} else if (page == "documentation") {
-					//
-				} else if (page == "about") {
-					//
-				} else if (page == "extensions") {
-					//
-				} else if (page == "password_manager") {
-					//
-				} else if (page == "search_history") {
-					//
-				} else if (page == "feedback_page") {
-					//
-				} else if (page == "contact") {
-					//
-				} else if (page == "services") {
-					//
-				} else {
-					buildHomePage();
-				}
-			} else {
-				serverDisconnectErr(page);
-			}
+				if (!pages.includes(page)) page = 'home';
+				const b = new builder(page);
+				b['build_' + page].bind(b)(userInfo);
+			} else { }
 		}
 	};
 
 	xhttp.send();
 }
 
-function buildHomePage(page) {
-	buildHomePage_add_homePageTopIcons(page, buildHomePage_add_homePageSearchBar);
+class builder {
+	constructor(page) {
+		this.page;
+	}
+
+	build_home(data) {
+		build(['homePageSearchBar', 'homePageTopIcons']);
+	}
 }
 
-function buildHomePage_add_homePageTopIcons(page, nextFunction) {
+var build = (components) => {
+	let s = "";
+	for (let i = 0; i < components.length; i++) {
+		s += "buildComponent(" + components[i] + ")";
+		if (i !== 0) s += ")";
+		if (i < components.length - 1) s += ".then("
+		if (i === components.length - 1) s += ";";
+	}
+	eval(s);
+}
+
+var buildComponent = (componentID) => {
 	var xhttp = new XMLHttpRequest();
-	var url = "http://localhost:8093/?page=" + page + "&type=data&dataType=component&componentID=homePageTopIcons";
-	xhttp.open("GET", url, true);
+	xhttp.open("GET", "http://localhost:8093/?page=" + page + "&type=data&dataType=component&componentID=" + componentID, true);
 
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4) {
 			if (this.status == 200) {
-				const component = this.responseText.toString();
-				document.getElementById('main').innerHTML += component;
+				document.getElementById('main').innerHTML += this.responseText.toString();
 
-				var link = document.createElement('link');
+				let link = document.createElement('link');
 				link.rel = 'stylesheet';
-				link.href = 'http://localhost:8093/?page=undefined&type=data&dataType=component_style&componentID=homePageTopIcons';
-				document.head.appendChild(link);
-
-				nextFunction(page);
-			}
-		}
-	};
-
-	xhttp.send();
-}
-
-function buildHomePage_add_homePageSearchBar(page) {
-	/*
-		<div class="search-container">
-			<form>
-				<label for="search-input" style="display: none;">Search with..</label>
-				<input type="text" id="search-input" class="search-input" placeholder="Search with PandaCrawler">
-				<button type="submit" class="search-button" onclick="">Search</button>
-			</form>
-		</div>
-	*/
-	var xhttp = new XMLHttpRequest();
-	var url = "http://localhost:8093/?page=" + page + "&type=data&dataType=component&componentID=homePageSearchBar";
-	xhttp.open("GET", url, true);
-
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4) {
-			if (this.status == 200) {
-				const component = this.responseText.toString();
-				document.getElementById('main').innerHTML += component;
-
-				var link = document.createElement('link');
-				link.rel = 'stylesheet';
-				link.href = 'http://localhost:8093/?page=undefined&type=data&dataType=component_style&componentID=homePageSearchBar';
+				link.href = 'http://localhost:8093/?page=undefined&type=data&dataType=component_style&componentID=' + componentID;
 				document.head.appendChild(link);
 			}
 		}

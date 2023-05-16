@@ -1,0 +1,25 @@
+[
+    {
+        "search": {
+            "APIs": [
+                {
+                    "API": ""
+                }
+            ]
+        }
+    },
+    [
+        "https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-web-search1/pricing",
+        "https://rapidapi.com/Serply/api/seo-api/pricing",
+        "https://rapidapi.com/quangphatc3/api/bing-search-apis/pricing",
+        "https://rapidapi.com/contextualwebsearch/api/custom-search/pricing",
+        "https://rapidapi.com/herosAPI/api/web-search24/pricing",
+        "https://rapidapi.com/searchapis/api/web-search-apis/pricing",
+        "https://rapidapi.com/Scoobydoo181/api/web-search13/pricing",
+        "https://rapidapi.com/airaudoeduardo/api/google-search83/pricing",
+        "https://rapidapi.com/searchapis/api/web-search-apis/pricing"
+    ],
+    [
+        "https://rapidapi.com/searchapis/api/web-typeahead/pricing"
+    ]
+]

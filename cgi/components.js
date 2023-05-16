@@ -51,20 +51,27 @@ function getChosenSearchEngine() {
 }
 
 app.get('/', function (req, res) {
+    res.writeHead(200, { "Access-Control-Allow-Origin": "*" });
+
     try {
         var infoFromURL = url.parse(req.url, true).query;
 
-        if ("dataType" in infoFromURL && infoFromURL.dataType == "component" && "componentID" in infoFromURL) {
-            fs.readFile(globalPathFinder(["src", infoFromURL.dataType + "s", infoFromURL.componentID], "c.html"), 'utf-8', function (err, data) {
+        if ("dataType" in infoFromURL && (infoFromURL.dataType == "component" || infoFromURL.dataType == "component_style") && "componentID" in infoFromURL) {
+            let file = "";
+            if (infoFromURL.dataType == "component_style") {
+                file = "src.css";
+            } else {
+                file = "c.html";
+            }
+            fs.readFile(globalPathFinder(["src", "components", infoFromURL.componentID], file), 'utf-8', function (err, data) {
                 if (err) {
                     throw err;
                 } else {
                     let dataString = data.toString();
-                    if (dataString.includes("@RANDOMPANDA")) {
+                    if (dataString.includes("@RANDOMPANDA"))
                         dataString = dataString.replace(/@RANDOMPANDA/g, getRandomNumber(28));
-                    } else if (dataString.includes("@SEARCHENGINE")) {
+                    if (dataString.includes("@SEARCHENGINE"))
                         dataString = dataString.replace(/@SEARCHENGINE/g, getChosenSearchEngine());
-                    }
                     res.write(dataString);
                     return res.end();
                 }

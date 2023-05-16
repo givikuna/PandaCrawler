@@ -1,24 +1,24 @@
 module.exports = {
     apps: [
         {
-            name: 'cgi',
+            name: 'index',
             script: 'cgi/index.js',
         },
         {
             name: 'components',
-            script: 'cgi/index.js',
+            script: 'cgi/components.js',
         },
         {
             name: 'image',
-            script: 'cgi/index.js',
+            script: 'cgi/image.js',
         },
         {
             name: 'select',
-            script: 'cgi/index.js',
+            script: 'cgi/select.js',
         },
         {
             name: 'src',
-            script: 'cgi/index.js',
+            script: 'cgi/src.js',
         },
     ],
 };
