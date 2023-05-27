@@ -1,0 +1,20 @@
+Pricing:
+
+Free (Web Search):
+https://rapidapi.com/contextualwebsearch/api/web-search - 100/day
+https://rapidapi.com/contextualwebsearch/api/custom-search - 100/day
+https://rapidapi.com/zahraupwork/api/all-serp - 25/month
+https://rapidapi.com/serphouse/api/serphouse/pricing - 400/month (200 delayed, 200 real time)
+https://rapidapi.com/abdelrhmanm525/api/tubesel/pricing - 1000/month
+https://programmablesearchengine.google.com/about/ - 100/day
+https://serpstack.com/ - 100/month
+https://rapidapi.com/herosAPI/api/google-search74/pricing - 100/month
+https://rapidapi.com/neoscrap-net/api/google-search72/pricing - 50/month
+https://rapidapi.com/UnlimitedAPI/api/google-web-search1/ - 100/month
+https://rapidapi.com/datascraper/api/g-search/pricing - 100/month (another 100 location suggest)
+https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-web-search/pricing - 100/month
+https://rapidapi.com/QualityAPIs/api/google-search-api-fast/pricing - 100/month
+https://rapidapi.com/Dodo54/api/google-search-2/pricing - 100/month
+
+Overall (Free):
+Web Search - 11175 searches (lots of this will be saved in the cloud for later use, hence lessening the cost)
