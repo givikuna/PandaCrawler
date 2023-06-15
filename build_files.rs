@@ -90,10 +90,8 @@ fn traverse_directories(dir: String) {
                             dir: "./".to_owned() + strip_dir(&_files[i]).as_str(),
                             file: _files[i].clone(),
                         }];
-                        // smthn causes this to hang, happens for anyithing involving FILES_DATA.lock()
                         let _ = &files_data[j].files.push(_file[0].clone());
                     }
-
                     j += 1;
                 }
             }
