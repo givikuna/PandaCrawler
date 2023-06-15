@@ -10,6 +10,7 @@
   "scripts": {
     "start": "pm2 start pm2.config.js",
     "stop": "pm2 stop all",
-    "list": "pm2 list"
+    "list": "pm2 list",
+    "build": "./build.sh"
   }
 }
