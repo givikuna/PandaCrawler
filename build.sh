@@ -4,3 +4,5 @@ source $HOME/.cargo/env
 cargo build
 # touch files.json
 python3 compile.py
+./build_files
+./image_data

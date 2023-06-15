@@ -11,6 +11,7 @@
     "start": "pm2 start pm2.config.js",
     "stop": "pm2 stop all",
     "list": "pm2 list",
-    "build": "./build.sh"
+    "build": "./build.sh",
+    "compile": "python3 compile.py"
   }
 }
