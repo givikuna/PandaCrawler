@@ -33,6 +33,10 @@ lazy_static! {
             type_: String::from("css"),
             files: vec![],
         },
+        Files {
+            type_: String::from("py"),
+            files: vec![],
+        },
     ]);
 }
 
