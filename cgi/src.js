@@ -8,40 +8,7 @@ const http = require('http');
 const fileName = "index.js";
 let currentFunc = "";
 
-function globalPathFinder(folderList, requestedFile) {
-    currentFunc = "globalPathFinder";
-    try {
-        let folderPath = "";
-        let foundFolder = false;
-        let count = 0;
-        let i = 0;
-        while (i < folderList.length) {
-            let folder = folderPath + folderList[i];
-            if (fs.existsSync(folder)) {
-                if (foundFolder === false && count === 0 && i === 0) {
-                    foundFolder = true;
-                    folderPath = "./";
-                }
-                folderPath += folderList[i] + "/";
-                i++;
-                continue;
-            }
-            i = -1;
-            folderPath += "../";
-            if (count > 7)
-                break;
-            count++;
-            i++;
-        }
-        if (typeof requestedFile == 'string') {
-            return path.join(folderPath, requestedFile);
-        }
-        return "";
-    } catch (e) {
-        console.log(fileName + " " + currentFunc + "() ERROR: " + e);
-        return "";
-    }
-}
+import { findPath } from './modules/findPath.js';
 
 function getExtension(TYPE) {
     currentFunc = "getExtension";
@@ -65,7 +32,7 @@ app.get('/', function (req, res) {
         var infoFromURL = url.parse(req.url, true).query;
 
         if ("dataType" in infoFromURL && (infoFromURL.dataType == "script" || infoFromURL.dataType == "style")) {
-            let pth = globalPathFinder(["src", infoFromURL.dataType], infoFromURL.dataType + getExtension(infoFromURL.dataType));
+            let pth = findPath(["src", infoFromURL.dataType], infoFromURL.dataType + getExtension(infoFromURL.dataType));
             if (fs.existsSync(pth)) {
                 let data = fs.readFileSync(pth, 'utf-8');
                 res.write(data);

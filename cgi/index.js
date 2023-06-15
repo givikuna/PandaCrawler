@@ -7,40 +7,7 @@ const url = require('url');
 const fileName = "index.js";
 let currentFunc = "";
 
-function globalPathFinder(folderList, requestedFile) {
-    currentFunc = "globalPathFinder";
-    try {
-        let folderPath = "";
-        let foundFolder = false;
-        let count = 0;
-        let i = 0;
-        while (i < folderList.length) {
-            let folder = folderPath + folderList[i];
-            if (fs.existsSync(folder)) {
-                if (foundFolder === false && count === 0 && i === 0) {
-                    foundFolder = true;
-                    folderPath = "./";
-                }
-                folderPath += folderList[i] + "/";
-                i++;
-                continue;
-            }
-            i = -1;
-            folderPath += "../";
-            if (count > 7)
-                break;
-            count++;
-            i++;
-        }
-        if (typeof requestedFile == 'string') {
-            return path.join(folderPath, requestedFile);
-        }
-        return "";
-    } catch (e) {
-        console.log(fileName + " " + currentFunc + "() ERROR: " + e);
-        return "";
-    }
-}
+import { findPath } from './modules/findPath.js';
 
 function getPage(infoFromURL) {
     currentFunc = "getPage";
@@ -59,7 +26,7 @@ app.get('/', function (req, res) {
     try {
         var infoFromURL = url.parse(req.url, true).query;
         const PAGE = getPage(infoFromURL);
-        const FILEPATH = globalPathFinder(["www"], "index.html");
+        const FILEPATH = findPath(["www"], "index.html");
         if (fs.existsSync(FILEPATH)) {
             fs.readFile(FILEPATH, 'utf-8', function (err, data) {
                 if (err) {

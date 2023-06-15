@@ -5,42 +5,6 @@ const fs = require('fs');
 const url = require('url');
 
 const fileName = "index.js";
-let currentFunc = "";
-
-function globalPathFinder(folderList, requestedFile) {
-    currentFunc = "globalPathFinder";
-    try {
-        let folderPath = "";
-        let foundFolder = false;
-        let count = 0;
-        let i = 0;
-        while (i < folderList.length) {
-            let folder = folderPath + folderList[i];
-            if (fs.existsSync(folder)) {
-                if (foundFolder === false && count === 0 && i === 0) {
-                    foundFolder = true;
-                    folderPath = "./";
-                }
-                folderPath += folderList[i] + "/";
-                i++;
-                continue;
-            }
-            i = -1;
-            folderPath += "../";
-            if (count > 7)
-                break;
-            count++;
-            i++;
-        }
-        if (typeof requestedFile == 'string') {
-            return path.join(folderPath, requestedFile);
-        }
-        return "";
-    } catch (e) {
-        console.log(fileName + " " + currentFunc + "() ERROR: " + e);
-        return "";
-    }
-}
 
 function getExtension(TYPE) {
     currentFunc = "getExtension";
