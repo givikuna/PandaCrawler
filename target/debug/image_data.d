@@ -1,1 +1,1 @@
-/workspaces/PandaCrawler/target/debug/image_data: /workspaces/PandaCrawler/image_data.rs
+/Users/givitsvariani/Documents/Givi/PandaCrawler/target/debug/image_data: /Users/givitsvariani/Documents/Givi/PandaCrawler/image_data.rs
